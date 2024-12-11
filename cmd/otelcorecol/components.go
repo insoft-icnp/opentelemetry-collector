@@ -23,6 +23,7 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 	nopreceiver "go.opentelemetry.io/collector/receiver/nopreceiver"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
+	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver"
 )
 
 func components() (otelcol.Factories, error) {
@@ -43,6 +44,7 @@ func components() (otelcol.Factories, error) {
 	factories.ExtensionModules[om7scanextension.NewFactory().Type()] = "github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension v0.0.1"
 
 	factories.Receivers, err = receiver.MakeFactoryMap(
+		hostmetricsreceiver.NewFactory(),
 		nopreceiver.NewFactory(),
 		otlpreceiver.NewFactory(),
 	)
