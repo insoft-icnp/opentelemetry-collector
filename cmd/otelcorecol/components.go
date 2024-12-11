@@ -3,6 +3,7 @@
 package main
 
 import (
+	"github.com/SigNoz/signoz-otel-collector/exporter/clickhouselogsexporter"
 	om7scanextension "github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension"
 
 	"go.opentelemetry.io/collector/component"
@@ -24,6 +25,7 @@ import (
 	nopreceiver "go.opentelemetry.io/collector/receiver/nopreceiver"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver"
+	healthcheckv2extension "github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckv2extension"
 )
 
 func components() (otelcol.Factories, error) {
@@ -34,6 +36,7 @@ func components() (otelcol.Factories, error) {
 		memorylimiterextension.NewFactory(),
 		zpagesextension.NewFactory(),
 		om7scanextension.NewFactory(),
+		healthcheckv2extension.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
@@ -60,6 +63,8 @@ func components() (otelcol.Factories, error) {
 		nopexporter.NewFactory(),
 		otlpexporter.NewFactory(),
 		otlphttpexporter.NewFactory(),
+		clickhouselogsexporter.NewFactory(),
+
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
