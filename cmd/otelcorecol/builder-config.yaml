@@ -107,3 +107,4 @@ replaces:
   - go.opentelemetry.io/collector/scraper => ../../scraper
   - go.opentelemetry.io/collector/semconv => ../../semconv
   - go.opentelemetry.io/collector/service => ../../service
+  - github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension => ../../extension/om7scanextension
