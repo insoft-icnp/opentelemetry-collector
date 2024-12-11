@@ -107,6 +107,10 @@ func init() {
 	}
 }
 
+func (host *Host) GetOm7Scan() *[]byte {
+	return host.Pipelines.ScanPipeline()
+}
+
 func (host *Host) RegisterZPages(mux *http.ServeMux, pathPrefix string) {
 	mux.HandleFunc(path.Join(pathPrefix, zServicePath), host.zPagesRequest)
 	mux.HandleFunc(path.Join(pathPrefix, zPipelinePath), host.Pipelines.HandleZPages)

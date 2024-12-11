@@ -1,0 +1,8 @@
+type: om7scan
+github_project: open-telemetry/opentelemetry-collector
+
+status:
+  class: extension
+  stability:
+    development: [extension]
+  distributions: []
