@@ -2,11 +2,12 @@
 
 module go.opentelemetry.io/collector/cmd/otelcorecol
 
-go 1.22.0
+go 1.23.3
 
-toolchain go1.22.9
+toolchain go1.23.4
 
 require (
+	github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension v0.0.1
 	go.opentelemetry.io/collector/component v0.115.0
 	go.opentelemetry.io/collector/confmap v1.21.0
 	go.opentelemetry.io/collector/confmap/provider/envprovider v1.21.0
@@ -120,6 +121,7 @@ require (
 	go.opentelemetry.io/collector/processor/processortest v0.115.0 // indirect
 	go.opentelemetry.io/collector/receiver/receiverprofiles v0.115.0 // indirect
 	go.opentelemetry.io/collector/receiver/receivertest v0.115.0 // indirect
+	go.opentelemetry.io/collector/scraper v0.115.0 // indirect
 	go.opentelemetry.io/collector/semconv v0.115.0 // indirect
 	go.opentelemetry.io/collector/service v0.115.0 // indirect
 	go.opentelemetry.io/contrib/bridges/otelzap v0.6.0 // indirect
@@ -296,3 +298,5 @@ replace go.opentelemetry.io/collector/scraper => ../../scraper
 replace go.opentelemetry.io/collector/semconv => ../../semconv
 
 replace go.opentelemetry.io/collector/service => ../../service
+
+replace github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension => ../../extension/om7scanextension

@@ -3,6 +3,8 @@
 package main
 
 import (
+	om7scanextension "github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension"
+
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/connector"
 	forwardconnector "go.opentelemetry.io/collector/connector/forwardconnector"
@@ -30,6 +32,7 @@ func components() (otelcol.Factories, error) {
 	factories.Extensions, err = extension.MakeFactoryMap(
 		memorylimiterextension.NewFactory(),
 		zpagesextension.NewFactory(),
+		om7scanextension.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
@@ -37,6 +40,7 @@ func components() (otelcol.Factories, error) {
 	factories.ExtensionModules = make(map[component.Type]string, len(factories.Extensions))
 	factories.ExtensionModules[memorylimiterextension.NewFactory().Type()] = "go.opentelemetry.io/collector/extension/memorylimiterextension v0.115.0"
 	factories.ExtensionModules[zpagesextension.NewFactory().Type()] = "go.opentelemetry.io/collector/extension/zpagesextension v0.115.0"
+	factories.ExtensionModules[om7scanextension.NewFactory().Type()] = "github.com/insoft-icnp/opentelemetry-collector/extension/om7scanextension v0.0.1"
 
 	factories.Receivers, err = receiver.MakeFactoryMap(
 		nopreceiver.NewFactory(),
